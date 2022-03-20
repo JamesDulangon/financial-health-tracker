@@ -1,0 +1,55 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml\" value=\"0.15217391304347827\" />\r\n        <entry key=\"..\\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/drawable/crop_health_icon.xml\" value=\"0.22\" />\r\n        <entry key=\"..\\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_fhpage.xml\" value=\"0.25\" />\r\n        <entry key=\"..\\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_webview.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/fin_h.xml\" value=\"0.5\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_15\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 09a304333cc7c79efc6beb76fe0344cabb83340c)
++++ .idea/misc.xml	(date 1629090451981)
+@@ -12,7 +12,7 @@
+       </map>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"GRADLE\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision 09a304333cc7c79efc6beb76fe0344cabb83340c)
++++ .idea/gradle.xml	(date 1629090366960)
+@@ -4,7 +4,7 @@
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+-        <option name="testRunner" value="GRADLE" />
++        <option name="testRunner" value="PLATFORM" />
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+         <option name="modules">
+Index: .idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/runConfigurations.xml	(date 1629090367311)
++++ .idea/runConfigurations.xml	(date 1629090367311)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file

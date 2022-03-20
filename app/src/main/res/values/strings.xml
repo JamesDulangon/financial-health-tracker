@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Financial Health Tracker</string>
+    <string name="initial_msg">Welcome to the first step towards better financial health!
+        Before anything else, we would like to know a few things about your current financial status.</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <!-- Strings used for FinancialHealthPage -->
+    <string name="tv_1">Net Worth</string>
+    <string name="tv_2">Savings Rate</string>
+    <string name="tv_3">Debt-to-income Ratio</string>
+    <string name="tv_6">Income Growth</string>
+    <string name="btn3">Press for more details</string>
+    <string name="btn5">Calculate Retirement Fund</string>
+    <string name="btn6">Check Backlog</string>
+    <string name="btn1">Edit Expenses</string>
+    <string name="btn2">Save</string>
+    <string name="et_1">Input Daily Expenditure</string>
+    <string name="btn4">Check Financial Health</string>
+
+    <string name="FHP_1">Monthly Income</string>
+    <string name="FHP_2">Electric Bill</string>
+    <string name="FHP_3">Water Bill</string>
+    <string name="FHP_4">Other Expenses</string>
+    <string name="FHP_5">Daily Expenditure</string>
+    <string name="FHP_6">Savings Goal</string>
+    <string name="FHP_7">Assessment</string>
+    <string name="FHP_8">Net Worth Change (%)</string>
+    <string name="FHP_9"><font color='#b2f24b'><b><u>Good</u></b></font></string>
+    <string name="FHP_10"><font color='#4bf24e'><b><u>Very Good</u></b></font></string>
+    <string name="FHP_11"><font color='#f25c4b'><b><u>Bad</u></b></font></string>
+
+    <!-- Strings used in the BackLog -->
+    <string name="BLog_1"><u>Latest Entry</u></string>
+    <string name="BLog_2"><u>Entry No.</u></string>
+
+    <string name="fhval">Financial Health Values</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>

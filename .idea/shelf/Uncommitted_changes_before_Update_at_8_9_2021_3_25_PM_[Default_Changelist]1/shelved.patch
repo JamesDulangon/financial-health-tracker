@@ -1,0 +1,125 @@
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">Financial Health Tracker</string>\r\n    <string name=\"initial_msg\">Welcome to the first step towards better financial health!\r\n        Before anything else, we would like to know a few things about your current financial status.</string>\r\n    <string name=\"title_activity_main2\">MainActivity2</string>\r\n    <!-- Strings used for fragments for navigation -->\r\n    <string name=\"first_fragment_label\">First Fragment</string>\r\n    <string name=\"second_fragment_label\">Second Fragment</string>\r\n    <string name=\"next\">Next</string>\r\n    <string name=\"previous\">Previous</string>\r\n\r\n    <string name=\"hello_first_fragment\">Hello first fragment</string>\r\n    <string name=\"hello_second_fragment\">Hello second fragment. Arg: %1$s</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	
++++ b/app/src/main/res/values/strings.xml	
+@@ -1,14 +1,14 @@
+ <resources>
+-    <string name="app_name">Financial Health Tracker</string>
+-    <string name="initial_msg">Welcome to the first step towards better financial health!
+-        Before anything else, we would like to know a few things about your current financial status.</string>
+-    <string name="title_activity_main2">MainActivity2</string>
+-    <!-- Strings used for fragments for navigation -->
+-    <string name="first_fragment_label">First Fragment</string>
+-    <string name="second_fragment_label">Second Fragment</string>
+-    <string name="next">Next</string>
+-    <string name="previous">Previous</string>
+-
+-    <string name="hello_first_fragment">Hello first fragment</string>
+-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
++    <string name="app_name">FinancialHealthTracker</string>
++    <string name="btn1">Monthly Expenses</string>
++    <string name="btn2">Save</string>
++    <string name="btn3">Press to see more details</string>
++    <string name="btn4">Check Financial Health</string>
++    <string name="et_1">Input Today\'s Expenditure</string>
++    <string name="tv_1">Net Worth</string>
++    <string name="tv_2">Savings Rate</string>
++    <string name="tv_3">Debt-to-income Ratio</string>
++    <string name="btn5">Calculate Retirement Fund</string>
++    <string name="tv_6">Income Growth</string>
++    <string name="fh_page">Financial Health Status</string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/java/com/example/financialhealthtracker/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.financialhealthtracker\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.widget.Button\r\nimport android.widget.Toast\r\nimport java.text.DateFormat\r\nimport java.util.*\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n    lateinit var usersDBHelper : UsersDBHelper\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n        startService()\r\n\r\n        usersDBHelper = UsersDBHelper(this)\r\n\r\n        var deadlineDate = 0\r\n        // you might want to use sql database to get the date\r\n\r\n        // This gets the current date\r\n        val calendarDate: Calendar = Calendar.getInstance()\r\n        val currentDate = DateFormat.getDateInstance().format(calendarDate.time)\r\n\r\n\r\n        // TODO: 08/08/2021 if statements when expenditure is high / deadline approaches\r\n        //ifStatement when deadline is reached, equate deadlineDate = currentDate\r\n        deadline()\r\n\r\n\r\n        //val goToExpenditure: Button = findViewById(R.id.buttonExpenses)\r\n        val save: Button = findViewById(R.id.saveBtn)\r\n/*\r\n        goToExpenditure.setOnClickListener(){\r\n\r\n            val intent = Intent(this, Expenses::class.java)\r\n            startActivity(intent)\r\n\r\n        }\r\n        */\r\n        save.setOnClickListener(){\r\n            //ifStatement when expenditure is too unhealthy\r\n            unhealthy()\r\n\r\n        }\r\n    }\r\n\r\n\r\n\r\n    //LOCAL PUSH NOTIFICATIONS FUNCTIONS\r\n    private fun startService(){\r\n\r\n        Toast.makeText(this, \"Started Service\", Toast.LENGTH_SHORT).show()\r\n        val x = 0\r\n        val serviceIntent: Intent = Intent(this, ExampleService::class.java)\r\n        serviceIntent.putExtra(\"input\", x)\r\n        startService(serviceIntent)\r\n    }\r\n\r\n    fun stopService(){\r\n        Toast.makeText(this, \"Stopped Service\", Toast.LENGTH_SHORT).show()\r\n        val serviceIntent: Intent = Intent(this, ExampleService::class.java)\r\n        stopService(serviceIntent)\r\n    }\r\n\r\n    private fun deadline (){\r\n        Toast.makeText(this, \"PaymentDeficit\", Toast.LENGTH_SHORT).show()\r\n        val x = 1\r\n        val serviceIntent: Intent = Intent(this, ExampleService::class.java)\r\n        serviceIntent.putExtra(\"input\", x)\r\n        startService(serviceIntent)\r\n    }\r\n\r\n    private fun unhealthy (){\r\n        Toast.makeText(this, \"PaymentDeficit\", Toast.LENGTH_SHORT).show()\r\n        val x = 2\r\n        val serviceIntent: Intent = Intent(this, ExampleService::class.java)\r\n        serviceIntent.putExtra(\"input\", x)\r\n        startService(serviceIntent)\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/financialhealthtracker/MainActivity.kt b/app/src/main/java/com/example/financialhealthtracker/MainActivity.kt
+--- a/app/src/main/java/com/example/financialhealthtracker/MainActivity.kt	
++++ b/app/src/main/java/com/example/financialhealthtracker/MainActivity.kt	
+@@ -2,10 +2,16 @@
+ 
+ import android.content.Intent
+ import androidx.appcompat.app.AppCompatActivity
++import kotlinx.android.synthetic.main.activity_main.*
+ import android.os.Bundle
++import android.view.View
++import android.app.AlertDialog
++import android.view.LayoutInflater
+ import android.widget.Button
+ import android.widget.Toast
++import kotlinx.android.synthetic.main.fin_h.view.*
+ import java.text.DateFormat
++import android.webkit.WebViewClient
+ import java.util.*
+ 
+ class MainActivity : AppCompatActivity() {
+@@ -24,7 +30,7 @@
+         // This gets the current date
+         val calendarDate: Calendar = Calendar.getInstance()
+         val currentDate = DateFormat.getDateInstance().format(calendarDate.time)
+-
++        val FHintent = Intent(this, FinancialHealthPage::class.java)
+ 
+         // TODO: 08/08/2021 if statements when expenditure is high / deadline approaches
+         //ifStatement when deadline is reached, equate deadlineDate = currentDate
+@@ -32,7 +38,7 @@
+ 
+ 
+         //val goToExpenditure: Button = findViewById(R.id.buttonExpenses)
+-        val save: Button = findViewById(R.id.saveBtn)
++        val save: Button = findViewById(R.id.buttonSave)
+ /*
+         goToExpenditure.setOnClickListener(){
+ 
+@@ -45,6 +51,41 @@
+             //ifStatement when expenditure is too unhealthy
+             unhealthy()
+ 
++        }
++
++        buttonFH.setOnClickListener {
++            val dialogView = LayoutInflater.from(this).inflate(R.layout.fin_h, null)
++            val builder = AlertDialog.Builder(this)
++                .setView(dialogView)
++                .setTitle(resources.getString(R.string.fh_page))
++            val alertDialog = builder.show()
++            val retval = usersDBHelper.readAllEntry()
++
++            val networthval = retval[retval.size-1].income.toFloat() - (retval[retval.size-1].todaysExpenditure.toFloat() * 30) - retval[retval.size-1].eBill.toFloat() - retval[retval.size-1].wBill.toFloat() - retval[retval.size-1].otherExpenses.toFloat()
++            val networthStr = dialogView.networth.text.toString() + ": %0.2F".format(networthval)
++            dialogView.networth.text = networthStr
++
++            val savrateval = retval[retval.size-1].savingsGoal.toFloat() / retval[retval.size-1].income.toFloat() * 100
++            val savrateStr = dialogView.savingsrate.text.toString() + ": %0.1F%".format(savrateval)
++            dialogView.savingsrate.text = savrateStr
++
++            val dtirate = ((retval[retval.size-1].todaysExpenditure.toFloat() * 30) + retval[retval.size-1].eBill.toFloat() + retval[retval.size-1].wBill.toFloat() + retval[retval.size-1].otherExpenses.toFloat()) / retval[retval.size-1].income.toFloat()
++            val dtirateStr = dialogView.dtiratio.text.toString() + ": %0.1F%".format(dtirate * 100)
++            dialogView.dtiratio.text = dtirateStr
++
++            val incomegrowth = retval[retval.size-1].income.toFloat() / retval[retval.size-2].income.toFloat()
++            val incomegrowthStr = dialogView.incomegrowth.text.toString() + ": %0.1F".format(incomegrowth-1)
++            dialogView.incomegrowth.text = incomegrowthStr
++
++            dialogView.buttonAdd.setOnClickListener {
++                alertDialog.dismiss()
++                startActivity(FHintent)
++            }
++
++            dialogView.buttonRetFund.setOnClickListener {
++                alertDialog.dismiss()
++
++            }
+         }
+     }
+ 

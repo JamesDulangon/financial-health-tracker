@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/networth"
+        android:layout_width="358dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/tv_1" />
+
+    <TextView
+        android:id="@+id/savingsrate"
+        android:layout_width="358dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/tv_2" />
+
+    <TextView
+        android:id="@+id/dtiratio"
+        android:layout_width="358dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/tv_3" />
+
+    <TextView
+        android:id="@+id/incomegrowth"
+        android:layout_width="358dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:hint="@string/tv_6" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="333dp"
+            android:layout_height="44dp"
+            android:text="@string/btn3"
+            app:backgroundTint="@android:color/holo_green_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/buttonBLog"
+            android:layout_width="333dp"
+            android:layout_height="44dp"
+            android:text="@string/btn6"
+            app:backgroundTint="@android:color/holo_green_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/buttonRetFund"
+            android:layout_width="333dp"
+            android:layout_height="44dp"
+            android:text="@string/btn5"
+            app:backgroundTint="@android:color/holo_green_light" />
+    </LinearLayout>
+
+</LinearLayout>

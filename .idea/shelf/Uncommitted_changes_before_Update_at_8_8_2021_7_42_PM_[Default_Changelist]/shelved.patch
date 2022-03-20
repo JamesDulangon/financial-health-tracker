@@ -1,0 +1,348 @@
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">FinancialHealthTracker</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 91bed229443f93eca097ba63a8961e8b58009ceb)
++++ b/app/src/main/res/values/strings.xml	(date 1628421092403)
+@@ -1,3 +1,15 @@
+ <resources>
+     <string name="app_name">FinancialHealthTracker</string>
++    <string name="btn1">Monthly Expenses</string>
++    <string name="btn2">Save</string>
++    <string name="btn3">Press to see more details</string>
++    <string name="btn4">Check Financial Health</string>
++    <string name="et_1">Input Today\'s Expenditure</string>
++    <string name="tv_1">Net Worth</string>
++    <string name="tv_2">Savings Rate</string>
++    <string name="tv_3">Debt-to-income Ratio</string>
++    <string name="tv_4">Credit Score</string>
++    <string name="tv_5">Retirement Fund</string>
++    <string name="tv_6">Income Growth</string>
++    <string name="fh_page">Financial Health Status</string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/java/com/example/financialhealthtracker/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.financialhealthtracker\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.view.View\r\nimport android.widget.Button\r\nimport android.widget.Toast\r\nimport java.text.DateFormat\r\nimport java.util.*\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n    lateinit var usersDBHelper : UsersDBHelper\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n        startService()\r\n\r\n        usersDBHelper = UsersDBHelper(this)\r\n\r\n        var deadlineDate = 0\r\n        // you might want to use sql database to get the date\r\n\r\n        // This gets the current date\r\n        val calendarDate: Calendar = Calendar.getInstance()\r\n        val currentDate = DateFormat.getDateInstance().format(calendarDate.time)\r\n\r\n\r\n        // TODO: 08/08/2021 if statements when expenditure is high / deadline approaches\r\n        //ifStatement when deadline is reached, equate deadlineDate = currentDate\r\n        deadline()\r\n\r\n        val goToExpenditure: Button = findViewById(R.id.buttonExpenses)\r\n        val save: Button = findViewById(R.id.buttonSave)\r\n\r\n        goToExpenditure.setOnClickListener(){\r\n\r\n            val intent = Intent(this, Expenses::class.java)\r\n            startActivity(intent)\r\n\r\n        }\r\n        save.setOnClickListener(){\r\n            //ifStatement when expenditure is too unhealthy\r\n            unhealthy()\r\n\r\n        }\r\n    }\r\n\r\n\r\n\r\n    //LOCAL PUSH NOTIFICATIONS FUNCTIONS\r\n    private fun startService(){\r\n\r\n        Toast.makeText(this, \"Started Service\", Toast.LENGTH_SHORT).show()\r\n        val x = 0\r\n        val serviceIntent: Intent = Intent(this, ExampleService::class.java)\r\n        serviceIntent.putExtra(\"input\", x)\r\n        startService(serviceIntent)\r\n    }\r\n\r\n    fun stopService(){\r\n        Toast.makeText(this, \"Stopped Service\", Toast.LENGTH_SHORT).show()\r\n        val serviceIntent: Intent = Intent(this, ExampleService::class.java)\r\n        stopService(serviceIntent)\r\n    }\r\n\r\n    private fun deadline (){\r\n        Toast.makeText(this, \"PaymentDeficit\", Toast.LENGTH_SHORT).show()\r\n        val x = 1\r\n        val serviceIntent: Intent = Intent(this, ExampleService::class.java)\r\n        serviceIntent.putExtra(\"input\", x)\r\n        startService(serviceIntent)\r\n    }\r\n\r\n    private fun unhealthy (){\r\n        Toast.makeText(this, \"PaymentDeficit\", Toast.LENGTH_SHORT).show()\r\n        val x = 2\r\n        val serviceIntent: Intent = Intent(this, ExampleService::class.java)\r\n        serviceIntent.putExtra(\"input\", x)\r\n        startService(serviceIntent)\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/financialhealthtracker/MainActivity.kt b/app/src/main/java/com/example/financialhealthtracker/MainActivity.kt
+--- a/app/src/main/java/com/example/financialhealthtracker/MainActivity.kt	(revision 91bed229443f93eca097ba63a8961e8b58009ceb)
++++ b/app/src/main/java/com/example/financialhealthtracker/MainActivity.kt	(date 1628422869409)
+@@ -2,10 +2,14 @@
+ 
+ import android.content.Intent
+ import androidx.appcompat.app.AppCompatActivity
++import kotlinx.android.synthetic.main.activity_main.*
+ import android.os.Bundle
+ import android.view.View
++import android.app.AlertDialog
++import android.view.LayoutInflater
+ import android.widget.Button
+ import android.widget.Toast
++import kotlinx.android.synthetic.main.fin_h.view.*
+ import java.text.DateFormat
+ import java.util.*
+ 
+@@ -25,7 +29,7 @@
+         // This gets the current date
+         val calendarDate: Calendar = Calendar.getInstance()
+         val currentDate = DateFormat.getDateInstance().format(calendarDate.time)
+-
++        val FHintent = Intent(this, FinancialHealthPage::class.java)
+ 
+         // TODO: 08/08/2021 if statements when expenditure is high / deadline approaches
+         //ifStatement when deadline is reached, equate deadlineDate = currentDate
+@@ -44,6 +48,27 @@
+             //ifStatement when expenditure is too unhealthy
+             unhealthy()
+ 
++        }
++
++        buttonFH.setOnClickListener {
++            val dialogView = LayoutInflater.from(this).inflate(R.layout.fin_h, null)
++            val builder = AlertDialog.Builder(this)
++                .setView(dialogView)
++                .setTitle(resources.getString(R.string.fh_page))
++            val alertDialog = builder.show()
++
++            val networthval = usersDBHelper.readEntry(income).toString().toFloat() - (usersDBHelper.readEntry(todaysExpenditure).toString().toFloat() * 30)
++            - usersDBHelper.readEntry(eBill).toString().toFloat() - usersDBHelper.readEntry(wBill).toString().toFloat() - usersDBHelper.readEntry(otherExpenses).toString().toFloat()
++            val networthStr = dialogView.networth.text.toString() + ": "
++            dialogView.networth.text = networthStr
++
++            val savrateStr = dialogView.savingsrate.text.toString() + ": "
++            dialogView.savingsrate.text = savrateStr
++
++            dialogView.buttonAdd.setOnClickListener {
++                alertDialog.dismiss()
++                startActivity(FHintent)
++            }
+         }
+     }
+ 
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <Button\r\n        android:id=\"@+id/buttonExpenses\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"384dp\"\r\n        android:text=\"Monthly Expenses\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.495\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/editExpenditure\"\r\n        app:layout_constraintVertical_bias=\"0.321\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/buttonSave\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"384dp\"\r\n        android:text=\"Save\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.498\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/buttonExpenses\"\r\n        app:layout_constraintVertical_bias=\"0.679\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/editExpenditure\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Input Today's Expenditure\"\r\n        android:inputType=\"numberDecimal\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.125\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision 91bed229443f93eca097ba63a8961e8b58009ceb)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1628420955151)
+@@ -8,42 +8,63 @@
+ 
+     <Button
+         android:id="@+id/buttonExpenses"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
++        android:layout_width="194dp"
++        android:layout_height="54dp"
+         android:layout_marginBottom="384dp"
+-        android:text="Monthly Expenses"
++        android:text="@string/btn1"
++        app:backgroundTint="@android:color/holo_green_dark"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.495"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/editExpenditure"
+-        app:layout_constraintVertical_bias="0.321" />
++        app:layout_constraintVertical_bias="0.321"
++        tools:ignore="TextContrastCheck" />
+ 
+     <Button
+         android:id="@+id/buttonSave"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
++        android:layout_width="100dp"
++        android:layout_height="51dp"
+         android:layout_marginBottom="384dp"
+-        android:text="Save"
++        android:text="@string/btn2"
++        app:backgroundTint="@android:color/holo_green_dark"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/buttonExpenses"
+-        app:layout_constraintVertical_bias="0.679" />
++        app:layout_constraintVertical_bias="0.679"
++        tools:ignore="TextContrastCheck" />
+ 
+     <EditText
+         android:id="@+id/editExpenditure"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:ems="10"
+-        android:hint="Input Today's Expenditure"
++        android:hint="@string/et_1"
++        android:importantForAutofill="no"
+         android:inputType="numberDecimal"
++        android:minHeight="48dp"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.497"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.125" />
++        app:layout_constraintVertical_bias="0.125"
++        tools:ignore="TextContrastCheck" />
++
++    <Button
++        android:id="@+id/buttonFH"
++        android:layout_width="293dp"
++        android:layout_height="52dp"
++        android:text="@string/btn4"
++        app:backgroundTint="@android:color/holo_green_dark"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.498"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/buttonSave"
++        app:layout_constraintVertical_bias="0.126"
++        tools:ignore="TextContrastCheck" />
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fin_h.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fin_h.xml b/app/src/main/res/layout/fin_h.xml
+new file mode 100644
+--- /dev/null	(date 1628421196890)
++++ b/app/src/main/res/layout/fin_h.xml	(date 1628421196890)
+@@ -0,0 +1,77 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:orientation="vertical"
++    android:padding="20dp">
++
++    <TextView
++        android:id="@+id/networth"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_1"
++        android:importantForAutofill="no"
++        android:inputType="textPassword" />
++
++    <TextView
++        android:id="@+id/savingsrate"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_2"
++        android:importantForAutofill="no"
++        android:inputType="textPassword" />
++
++    <TextView
++        android:id="@+id/dtiratio"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_3"
++        android:importantForAutofill="no"
++        android:inputType="textPassword" />
++
++    <TextView
++        android:id="@+id/creditscore"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_4"
++        android:importantForAutofill="no"
++        android:inputType="textPassword" />
++
++    <TextView
++        android:id="@+id/retfund"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_5"
++        android:importantForAutofill="no"
++        android:inputType="textPassword" />
++
++    <TextView
++        android:id="@+id/incomegrowth"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_6"
++        android:importantForAutofill="no"
++        android:inputType="textPassword" />
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="horizontal"
++        android:gravity="center">
++
++        <Button
++            android:id="@+id/buttonAdd"
++            android:layout_width="333dp"
++            android:layout_height="44dp"
++            android:text="@string/btn3"
++            app:backgroundTint="@android:color/holo_green_light" />
++    </LinearLayout>
++</LinearLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/financialhealthtracker/FinancialHealthPage.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/financialhealthtracker/FinancialHealthPage.kt b/app/src/main/java/com/example/financialhealthtracker/FinancialHealthPage.kt
+new file mode 100644
+--- /dev/null	(date 1628421556546)
++++ b/app/src/main/java/com/example/financialhealthtracker/FinancialHealthPage.kt	(date 1628421556546)
+@@ -0,0 +1,14 @@
++package com.example.financialhealthtracker
++
++import androidx.appcompat.app.AppCompatActivity
++import android.os.Bundle
++import android.content.Intent
++import android.os.PersistableBundle
++import kotlinx.android.synthetic.main.activity_fhpage.*
++
++class FinancialHealthPage: AppCompatActivity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.activity_fhpage)
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_fhpage.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_fhpage.xml b/app/src/main/res/layout/activity_fhpage.xml
+new file mode 100644
+--- /dev/null	(date 1628421408740)
++++ b/app/src/main/res/layout/activity_fhpage.xml	(date 1628421408740)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.financialhealthtracker\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.FinancialHealthTracker\">\r\n        <activity android:name=\".Expenses\"></activity>\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n\r\n        <service android:name=\".ExampleService\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 91bed229443f93eca097ba63a8961e8b58009ceb)
++++ b/app/src/main/AndroidManifest.xml	(date 1628421436986)
+@@ -17,6 +17,7 @@
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++        <activity android:name=".FinancialHealthPage"></activity>
+ 
+         <service android:name=".ExampleService" />
+     </application>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n<<<<<<< HEAD\r\n        <entry key=\"..\\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_expenses.xml\" value=\"0.4\" />\r\n        <entry key=\"..\\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml\" value=\"0.4\" />\r\n=======\r\n        <entry key=\"..\\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml\" value=\"0.15217391304347827\" />\r\n        <entry key=\"..\\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml\" value=\"0.20520833333333333\" />\r\n>>>>>>> b0ced6db6d980dfeb5181822c19e68fcca92ee55\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_X\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 91bed229443f93eca097ba63a8961e8b58009ceb)
++++ b/.idea/misc.xml	(date 1628420429346)
+@@ -3,13 +3,9 @@
+   <component name="DesignSurface">
+     <option name="filePathToZoomLevelMap">
+       <map>
+-<<<<<<< HEAD
+-        <entry key="..\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_expenses.xml" value="0.4" />
+-        <entry key="..\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml" value="0.4" />
+-=======
+         <entry key="..\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml" value="0.15217391304347827" />
+-        <entry key="..\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
+->>>>>>> b0ced6db6d980dfeb5181822c19e68fcca92ee55
++        <entry key="..\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml" value="0.33" />
++        <entry key="..\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/fin_h.xml" value="0.5" />
+       </map>
+     </option>
+   </component>

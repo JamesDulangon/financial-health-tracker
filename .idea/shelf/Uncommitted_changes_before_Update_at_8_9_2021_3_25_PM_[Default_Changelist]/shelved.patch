@@ -1,0 +1,308 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <Button\r\n        android:id=\"@+id/saveBtn\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"32dp\"\r\n        android:text=\"Save\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/expenditure\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/expenditure\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"88dp\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Input Today's Expenditure\"\r\n        android:inputType=\"numberDecimal\"\r\n        android:minHeight=\"48dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.5\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/monthlyExpensesBtn\"\r\n        style=\"@style/Widget.MaterialComponents.Button.OutlinedButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"108dp\"\r\n        android:text=\"Check Monthly Expenses\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/saveBtn\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	
++++ b/app/src/main/res/layout/activity_main.xml	
+@@ -7,38 +7,64 @@
+     tools:context=".MainActivity">
+ 
+     <Button
+-        android:id="@+id/saveBtn"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginTop="32dp"
+-        android:text="Save"
++        android:id="@+id/buttonExpenses"
++        android:layout_width="194dp"
++        android:layout_height="54dp"
++        android:layout_marginBottom="384dp"
++        android:text="@string/btn1"
++        app:backgroundTint="@android:color/holo_green_dark"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.495"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/editExpenditure"
++        app:layout_constraintVertical_bias="0.321"
++        tools:ignore="TextContrastCheck" />
++
++    <Button
++        android:id="@+id/buttonSave"
++        android:layout_width="100dp"
++        android:layout_height="51dp"
++        android:layout_marginBottom="384dp"
++        android:text="@string/btn2"
++        app:backgroundTint="@android:color/holo_green_dark"
++        app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/expenditure" />
++        app:layout_constraintTop_toBottomOf="@+id/buttonExpenses"
++        app:layout_constraintVertical_bias="0.679"
++        tools:ignore="TextContrastCheck" />
+ 
+     <EditText
+-        android:id="@+id/expenditure"
++        android:id="@+id/editExpenditure"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginTop="88dp"
+         android:ems="10"
+-        android:hint="Input Today's Expenditure"
++        android:hint="@string/et_1"
++        android:importantForAutofill="no"
+         android:inputType="numberDecimal"
+         android:minHeight="48dp"
++        app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.5"
++        app:layout_constraintHorizontal_bias="0.497"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.125"
++        tools:ignore="TextContrastCheck" />
+ 
+     <Button
+-        android:id="@+id/monthlyExpensesBtn"
+-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginTop="108dp"
+-        android:text="Check Monthly Expenses"
++        android:id="@+id/buttonFH"
++        android:layout_width="293dp"
++        android:layout_height="52dp"
++        android:text="@string/btn4"
++        app:backgroundTint="@android:color/holo_green_dark"
++        app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.498"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/saveBtn" />
++        app:layout_constraintTop_toBottomOf="@+id/buttonSave"
++        app:layout_constraintVertical_bias="0.126"
++        tools:ignore="TextContrastCheck" />
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.financialhealthtracker\" >\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.FinancialHealthTracker\" >\r\n        <activity\r\n            android:name=\".LaunchActivity\"\r\n            android:exported=\"true\" >\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity android:name=\".Expenses\" />\r\n        <activity android:name=\".MainActivity\" >\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n\r\n        <service android:name=\".ExampleService\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	
++++ b/app/src/main/AndroidManifest.xml	
+@@ -26,6 +26,8 @@
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++        <activity android:name=".FinancialHealthPage"></activity>
++        <activity android:name=".WebActivity"></activity>
+ 
+         <service android:name=".ExampleService" />
+     </application>
+Index: app/src/main/res/layout/activity_webview.xml
+===================================================================
+diff --git a/app/src/main/res/layout/activity_webview.xml b/app/src/main/res/layout/activity_webview.xml
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/res/layout/activity_webview.xml	
+@@ -0,0 +1,15 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".MainActivity">
++
++    <WebView
++        android:id="@+id/webView"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:layout_alignParentBottom="true"
++        android:layout_marginBottom="-0dp" />
++</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/financialhealthtracker/WebActivity.kt
+===================================================================
+diff --git a/app/src/main/java/com/example/financialhealthtracker/WebActivity.kt b/app/src/main/java/com/example/financialhealthtracker/WebActivity.kt
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/java/com/example/financialhealthtracker/WebActivity.kt	
+@@ -0,0 +1,23 @@
++package com.example.financialhealthtracker
++
++import androidx.appcompat.app.AppCompatActivity
++import android.os.Bundle
++import kotlinx.android.synthetic.main.activity_webview.*
++import android.app.AlertDialog
++import android.widget.Toast
++import android.webkit.WebViewClient
++
++class WebActivity : AppCompatActivity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.activity_webview)
++
++        webView.webViewClient = WebViewClient()
++        webView.loadUrl("https://www.calcxml.com/calculators/retirement-calculator")
++    }
++
++    override fun onBackPressed() {
++        if(webView!!.canGoBack()) webView.goBack()
++        else super.onBackPressed()
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_fhpage.xml
+===================================================================
+diff --git a/app/src/main/res/layout/activity_fhpage.xml b/app/src/main/res/layout/activity_fhpage.xml
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/res/layout/activity_fhpage.xml	
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fin_h.xml
+===================================================================
+diff --git a/app/src/main/res/layout/fin_h.xml b/app/src/main/res/layout/fin_h.xml
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/res/layout/fin_h.xml	
+@@ -0,0 +1,65 @@
++<?xml version="1.0" encoding="utf-8"?>
++<LinearLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:orientation="vertical"
++    android:padding="20dp">
++
++    <TextView
++        android:id="@+id/networth"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_1" />
++
++    <TextView
++        android:id="@+id/savingsrate"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_2" />
++
++    <TextView
++        android:id="@+id/dtiratio"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_3" />
++
++    <TextView
++        android:id="@+id/incomegrowth"
++        android:layout_width="358dp"
++        android:layout_height="49dp"
++        android:ems="10"
++        android:hint="@string/tv_6" />
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="horizontal"
++        android:gravity="center">
++
++        <Button
++            android:id="@+id/buttonAdd"
++            android:layout_width="333dp"
++            android:layout_height="44dp"
++            android:text="@string/btn3"
++            app:backgroundTint="@android:color/holo_green_light" />
++    </LinearLayout>
++
++    <LinearLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:orientation="horizontal"
++        android:gravity="center">
++
++        <Button
++            android:id="@+id/buttonRetFund"
++            android:layout_width="333dp"
++            android:layout_height="44dp"
++            android:text="@string/btn5"
++            app:backgroundTint="@android:color/holo_green_light" />
++    </LinearLayout>
++</LinearLayout>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n<<<<<<< HEAD\r\n        <entry key=\"..\\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_expenses.xml\" value=\"0.4\" />\r\n        <entry key=\"..\\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml\" value=\"0.4\" />\r\n=======\r\n        <entry key=\"..\\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml\" value=\"0.15217391304347827\" />\r\n        <entry key=\"..\\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml\" value=\"0.20520833333333333\" />\r\n>>>>>>> b0ced6db6d980dfeb5181822c19e68fcca92ee55\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_X\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -3,17 +3,14 @@
+   <component name="DesignSurface">
+     <option name="filePathToZoomLevelMap">
+       <map>
+-<<<<<<< HEAD
+-        <entry key="..\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_expenses.xml" value="0.4" />
+-        <entry key="..\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml" value="0.4" />
+-=======
+         <entry key="..\:/CPE3323_MobileDev/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml" value="0.15217391304347827" />
+-        <entry key="..\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
+->>>>>>> b0ced6db6d980dfeb5181822c19e68fcca92ee55
++        <entry key="..\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_main.xml" value="0.33" />
++        <entry key="..\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/activity_webview.xml" value="0.33" />
++        <entry key="..\:/Users/JoseMartin/Documents/School Related/AY 2020-2021 SECOND SEMESTER/CpE 3323/Final Project/FinancialHealthTracker/app/src/main/res/layout/fin_h.xml" value="0.5" />
+       </map>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: app/src/main/java/com/example/financialhealthtracker/FinancialHealthPage.kt
+===================================================================
+diff --git a/app/src/main/java/com/example/financialhealthtracker/FinancialHealthPage.kt b/app/src/main/java/com/example/financialhealthtracker/FinancialHealthPage.kt
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/java/com/example/financialhealthtracker/FinancialHealthPage.kt	
+@@ -0,0 +1,14 @@
++package com.example.financialhealthtracker
++
++import androidx.appcompat.app.AppCompatActivity
++import android.os.Bundle
++import android.content.Intent
++import android.os.PersistableBundle
++import kotlinx.android.synthetic.main.activity_fhpage.*
++
++class FinancialHealthPage: AppCompatActivity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.activity_fhpage)
++    }
++}
+\ No newline at end of file
